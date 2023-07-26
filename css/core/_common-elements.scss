@@ -27,7 +27,9 @@ h3 {
   }
   &--secondary {
     // style za read more
-    color: gray;
+
+    color: var.$text-color-primary;
+    font-weight: var.$font-weight-bold;
   }
 }
 
