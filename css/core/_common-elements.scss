@@ -15,6 +15,7 @@ h3 {
   font-weight: var.$font-weight-bold;
 }
 .btn {
+  display: inline-block;
   background-color: transparent;
   border: none;
   text-decoration: none;
@@ -24,7 +25,7 @@ h3 {
     // style za download button
     border: 1px solid white;
   }
-  &--seconadry {
+  &--secondary {
     // style za read more
     color: gray;
   }
