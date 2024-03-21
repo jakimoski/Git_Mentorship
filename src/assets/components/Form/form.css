@@ -1,0 +1,15 @@
+.form-row {
+  margin-bottom: 2rem;
+  & label {
+    display: block;
+    text-align: center;
+  }
+  & input {
+    width: 100%;
+  }
+
+  & select {
+    width: 100%;
+    margin: 0;
+  }
+}
