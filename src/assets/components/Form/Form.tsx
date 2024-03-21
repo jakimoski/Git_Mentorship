@@ -30,7 +30,7 @@ export default function Form() {
 
     const formData = new FormData(event.target);
     const postData: TCardProps = Object.fromEntries(formData.entries());
-    postData.date = format(new Date(), "MM/dd/yyyy");
+    postData.date = format(new Date(), "MM/dd/yyyy HH:mm:ss");
     postData.id = Math.floor(Math.random() * 1000);
     localStorage.setItem("items", JSON.stringify([...prevItems, postData]));
 
