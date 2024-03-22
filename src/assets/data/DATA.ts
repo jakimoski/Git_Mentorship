@@ -33,7 +33,7 @@ export const DATA = [
   },
   {
     id: 3,
-    title: "Letter, The (La lettre)",
+    title: "Letter, (La lettre)",
     name: "Vojo",
     description: "Hair causing external constriction, subsequent encounter",
     image: `https://picsum.photos/id/${id()}/400/400`,
@@ -41,7 +41,7 @@ export const DATA = [
   },
   {
     id: 4,
-    title: "Man from Snowy River, The",
+    title: "Man from Snowy River",
     name: "Vlatko",
     description: "Drug induced retention of urine",
     image: `https://picsum.photos/id/${id()}/400/400`,

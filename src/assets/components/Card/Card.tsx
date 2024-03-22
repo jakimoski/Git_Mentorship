@@ -1,14 +1,6 @@
 import { formatDistance } from "date-fns";
 import "./card.css";
-
-type TCardProps = {
-  id: number;
-  title: string;
-  name: string;
-  description: string;
-  image: string;
-  date: string;
-};
+import { TCardProps } from "../../types/types";
 
 export default function Card({
   title,

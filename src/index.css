@@ -1,5 +1,5 @@
 :root.light-mode {
-  --color-primary: #f8f9fa;
+  --color-primary: rgb(238, 238, 238);
   --color-secondary: #e4e6eb;
   --color-tertiary: #8899a6;
   --shadow-primary: rgb(136, 153, 166, 0.3);
@@ -30,6 +30,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100svh;
+  font-family: system-ui;
   background-color: var(--color-primary);
   color: var(--color);
 }
@@ -51,7 +52,7 @@ h1,
 h2,
 h3 {
   padding-top: 0px;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 h1 {
   font-size: clamp(36px, 7vw, 26px);

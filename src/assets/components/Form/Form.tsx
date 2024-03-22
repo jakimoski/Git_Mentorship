@@ -1,28 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { TUsers } from "../../types/types";
 import "./form.css";
 import { format } from "date-fns";
+import { useLoaderData } from "react-router-dom";
+import { TUsers } from "../../types/types";
 
 export default function Form() {
+  // Get all posts
   const prevItems: [] = JSON.parse(localStorage.getItem("items") || `""`);
+  // Get users
+  const users = useLoaderData() as TUsers[];
 
-  // const [post, setPost] = useState<TCardProps>({} as TCardProps);
-  const [users, setUsers] = useState<TUsers[]>([]);
-
-  useEffect(() => {
-    // Load all users from api
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) =>
-        // Map users data and update users state with name and id
-        setUsers(res.data.map((el: any) => ({ id: el.id, name: el.name })))
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  // Submit handler
   const submitHandler = (event: any) => {
     event.preventDefault();
 
@@ -94,7 +81,9 @@ export default function Form() {
           // onChange={(e) => createPost("image", e.target.value)}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button className="form-btn" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

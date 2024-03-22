@@ -2,6 +2,7 @@ import { useState } from "react";
 import closeIcon from "../../../close.png";
 import chatbot from "../../../chatbot.png";
 import "./caht-bot.css";
+import { easeInOut, motion } from "framer-motion";
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,14 @@ export default function ChatBot() {
   return (
     <div>
       {isOpen ? (
-        <div className="chatbot-container">
+        <motion.div
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: easeInOut }}
+          className="chatbot-container"
+        >
           <div className="chatbot-close" onClick={toggleChatbot}>
             <img src={closeIcon} alt="Close Icon" />
           </div>
@@ -23,7 +31,7 @@ export default function ChatBot() {
             allow="microphone;"
             src="https://console.dialogflow.com/api-client/demo/embedded/0e1b9f3c-b872-4a22-9f97-5ff0e0e63052"
           ></iframe>
-        </div>
+        </motion.div>
       ) : (
         <div className="chatbot-icon" onClick={toggleChatbot}>
           <img src={chatbot} alt="Chatbot Icon" width="60" height="60" />
