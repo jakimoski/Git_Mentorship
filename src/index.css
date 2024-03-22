@@ -3,11 +3,12 @@
   --color-secondary: #e4e6eb;
   --color-tertiary: #8899a6;
   --shadow-primary: rgb(136, 153, 166, 0.3);
-  --shadow-hover: rgb(136, 153, 166, 0.5);
+  --shadow-hover: rgba(120, 131, 139, 0.5);
   --background: #f8f9fa;
   --color: #18191a;
   --button-background: #4dab9a;
   --icon-color: #15202b;
+  --chat-background: #192734;
 }
 
 :root.dark-mode {
@@ -20,6 +21,7 @@
   --button-background: #4dab9a;
   --color: #f1f1ef;
   --icon-color: #ffdc49;
+  --chat-background: rgb(238, 238, 238);
 }
 * {
   box-sizing: border-box;
@@ -33,6 +35,7 @@ body {
   font-family: system-ui;
   background-color: var(--color-primary);
   color: var(--color);
+  transition: all 0.3s ease-in-out;
 }
 main {
   padding: 2% 5%;

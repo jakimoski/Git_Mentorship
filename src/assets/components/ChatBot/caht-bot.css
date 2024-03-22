@@ -16,15 +16,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background-color: #fff;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  background-color: var(--chat-background);
+  box-shadow: 5px 5px 15px var(--shadow-hover);
+  padding: 30px;
+  border-radius: 12px;
 }
 
 .chatbot-close {
   position: absolute;
-  top: -3px;
-  right: -3px;
+  top: 3px;
+  right: 3px;
   cursor: pointer;
 }
 

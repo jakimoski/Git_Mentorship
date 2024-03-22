@@ -5,7 +5,7 @@
   border-radius: 12px;
   box-shadow: 2px 2px 10px var(--shadow-primary);
   width: min(100%, 650px);
-
+  transition: all 0.3s ease-in-out;
   & h1 {
     text-align: center;
   }
@@ -52,6 +52,7 @@ select:focus {
   background: var(--button-background);
   color: var(--color);
   margin-top: 10px;
+  transition: all 0.2s ease-in-out;
 }
 
 .form-btn:hover {
