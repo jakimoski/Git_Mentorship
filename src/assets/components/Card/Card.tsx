@@ -1,4 +1,5 @@
-import { formatDistance, subDays } from "date-fns";
+import { formatDistance } from "date-fns";
+import "./card.css";
 
 type TCardProps = {
   id: number;
@@ -17,7 +18,7 @@ export default function Card({
   date,
 }: TCardProps) {
   return (
-    <div>
+    <div className="card">
       <h2>{title}</h2>
       <p>by {name}</p>
       <img src={image} alt={title} />

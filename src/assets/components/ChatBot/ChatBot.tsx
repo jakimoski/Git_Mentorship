@@ -1,6 +1,8 @@
 import { useState } from "react";
 import closeIcon from "../../../close.png";
 import chatbot from "../../../chatbot.png";
+import "./caht-bot.css";
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +26,7 @@ export default function ChatBot() {
         </div>
       ) : (
         <div className="chatbot-icon" onClick={toggleChatbot}>
-          <img src={chatbot} alt="Chatbot Icon" width="70" height="70" />
+          <img src={chatbot} alt="Chatbot Icon" width="60" height="60" />
         </div>
       )}
     </div>

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TCardProps, TUsers } from "../../types/types";
-import "./form.css";
 import { format } from "date-fns";
+import "./form.css";
 
 export default function Form() {
-  const prevItems: [] = JSON.parse(localStorage.getItem("items"));
+  const prevItems: [] = JSON.parse(localStorage.getItem("items") || `""`);
 
   const [post, setPost] = useState<TCardProps>({} as TCardProps);
   const [users, setUsers] = useState<TUsers[]>([]);
@@ -29,7 +29,7 @@ export default function Form() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const postData: TCardProps = Object.fromEntries(formData.entries());
+    const postData: any = Object.fromEntries(formData.entries());
     postData.date = format(new Date(), "MM/dd/yyyy HH:mm:ss");
     postData.id = Math.floor(Math.random() * 1000);
     localStorage.setItem("items", JSON.stringify([...prevItems, postData]));
@@ -43,7 +43,7 @@ export default function Form() {
   //TODO Send post to locall storage
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className="form" onSubmit={submitHandler}>
       <h2>Enter a new post</h2>
       <div className="form-row">
         <label htmlFor="title">Post title:</label>
