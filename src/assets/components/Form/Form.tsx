@@ -1,23 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { TCardProps, TUsers } from "../../types/types";
-import { format } from "date-fns";
+import { TUsers } from "../../types/types";
 import "./form.css";
+import { format } from "date-fns";
 
 export default function Form() {
   const prevItems: [] = JSON.parse(localStorage.getItem("items") || `""`);
 
-  const [post, setPost] = useState<TCardProps>({} as TCardProps);
+  // const [post, setPost] = useState<TCardProps>({} as TCardProps);
   const [users, setUsers] = useState<TUsers[]>([]);
 
-  const createPost = (key: string, value: string) => {
-    setPost((prevPost) => ({ ...prevPost, [key]: value }));
-  };
-
   useEffect(() => {
+    // Load all users from api
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) =>
+        // Map users data and update users state with name and id
         setUsers(res.data.map((el: any) => ({ id: el.id, name: el.name })))
       )
       .catch((err) => {
@@ -28,46 +26,50 @@ export default function Form() {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
+    // Get data from form and create an object
     const formData = new FormData(event.target);
     const postData: any = Object.fromEntries(formData.entries());
+
+    // Add missing values to post object
     postData.date = format(new Date(), "MM/dd/yyyy HH:mm:ss");
     postData.id = Math.floor(Math.random() * 1000);
+
+    // Update Local Storage posts
     localStorage.setItem("items", JSON.stringify([...prevItems, postData]));
 
+    // Reset Form
     event.target.reset();
   };
 
-  console.log(post);
-  console.log(prevItems);
-
-  //TODO Send post to locall storage
-
   return (
     <form className="form" onSubmit={submitHandler}>
-      <h2>Enter a new post</h2>
+      <h1>Enter a new post</h1>
       <div className="form-row">
         <label htmlFor="title">Post title:</label>
         <input
           type="text"
           id="title"
           name="title"
+          required
           // onChange={(e) => createPost("title", e.target.value)}
         />
       </div>
       <div className="form-row">
-        <label htmlFor="description">Post title:</label>
+        <label htmlFor="description">Post Description:</label>
         <input
           type="text"
           id="description"
           name="description"
+          required
           // onChange={(e) => createPost("description", e.target.value)}
         />
       </div>
       <div className="form-row">
-        <label htmlFor="user">Post title:</label>
+        <label htmlFor="user">User:</label>
         <select
-          name="user"
+          name="name"
           id="user"
+          required
           // onChange={(e) => createPost("name", e.target.value)}
         >
           <option className="checked" defaultChecked value={""}>
@@ -83,15 +85,16 @@ export default function Form() {
         </select>
       </div>
       <div className="form-row">
-        <label htmlFor="image">Post title:</label>
+        <label htmlFor="image">Image Url:</label>
         <input
           type="url"
           id="image"
           name="image"
+          required
           // onChange={(e) => createPost("image", e.target.value)}
         />
       </div>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
